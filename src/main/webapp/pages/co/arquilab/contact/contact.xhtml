@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/principal.xhtml">
+
+	<ui:define name="body">
+		<h:form id="form">
+			<p:messages id="msj" showDetail="true" />
+
+			<div class="row-fluid">
+				<div class="span8" id="divMain">
+					<p:panel header="Contáctanos" id="contactPnl">
+
+						<div align="center">
+							<p:panelGrid columns="1" styleClass="ui-panelgrid-blank">
+
+								<p:outputLabel value="#{mensaje.name}"
+									style="font-weight:bold; font-size:14px" />
+								<p:inputText id="txtName" value="#{manageContact.contact.name}"
+									style="font-size:14px" maxlength="100" />
+
+								<p:outputLabel value="#{mensaje.email}"
+									style="font-weight:bold; font-size:14px" />
+								<p:inputText id="txtEmail" maxlength="50"
+									value="#{manageContact.contact.email}" style="font-size:14px" />
+
+								<p:outputLabel value="#{mensaje.phoneNumber}"
+									style="font-weight:bold; font-size:14px" />
+								<p:inputText id="txtPhoneNumber" maxlength="50"
+									value="#{manageContact.contact.phoneNumber}" style="font-size:14px" />
+
+								<p:outputLabel value="#{mensaje.comments}"
+									style="font-weight:bold; font-size:14px" />
+								<p:inputTextarea id="txtContact" maxlength="500"
+									value="#{manageContact.contact.comment}" style="font-size:14px" />
+
+							</p:panelGrid>
+						</div>
+						<p:spacer height="20" />
+						<div align="center">
+							<p:commandButton id="btnSendContact"
+								action="#{manageContact.sendContact()}"
+								style="font-size:14px; font-weight: normal !important;"
+								value="#{mensaje.send}" update=":form" />
+
+						</div>
+						<p:blockUI block=":form:contactPnl" trigger="btnSendContact"
+							styleClass="cargando" />
+
+					</p:panel>
+				</div>
+
+				<!--Edit Sidebar Content here-->
+				<div class="span4 sidebar">
+
+					<div class="sidebox">
+						<h3 class="sidebox-title">#{mensaje.Information} de contacto</h3>
+						<p>
+							<address>
+								<strong>Arquilab, Ltda.</strong><br /> Carrera 21 No- 17-17,
+								Glorieta San Francisco<br /> Bucaramanga, Colombia<br /> <abbr
+									title="Teléfono">Tel:</abbr> (7) 6347504-6458142-6458143<br />
+								<abbr title="Celular">Cel:</abbr>316 6914615 – 316 6913748
+							</address>
+							<address>
+								<strong>Email</strong><br /> <a
+									href="mailto:ventas@arquilab.co">ventas@arquilab.co</a>
+							</address>
+						</p>
+
+						<!-- Start Side Categories -->
+
+						<!-- End Side Categories -->
+
+					</div>
+
+
+
+				</div>
+				<!--/End Sidebar Content-->
+			</div>
+
+
+		</h:form>
+	</ui:define>
+
+
+
+</ui:composition>
