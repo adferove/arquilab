@@ -124,6 +124,14 @@
 			<artifactId>omnifaces</artifactId>
 			<version>2.6</version>
 		</dependency>
+		
+		<!-- POSTGRES PARA LA VERSION 3 DE OPENSHIFT QUE ES CON CADENA DE CONEXION. -->
+                <dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.1.1</version>
+                </dependency>
+		
 	</dependencies>
 
 	<profiles>
