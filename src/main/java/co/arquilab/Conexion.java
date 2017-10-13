@@ -29,10 +29,19 @@ public class Conexion implements Serializable{
 	public Conexion() {
 		try {
 
-			InitialContext ctx = new InitialContext();
+			//InitialContext ctx = new InitialContext();
 			//DataSource ds = (DataSource) ctx.lookup("java:/PostgresDS");
-			DataSource ds = (DataSource) ctx.lookup("java:jboss/datasources/PostgreSQLDS");
-			con = ds.getConnection();
+			//DataSource ds = (DataSource) ctx.lookup("java:jboss/datasources/PostgreSQLDS");
+			//con = ds.getConnection();
+			
+			// **************openshuftV3********************
+			String DB_driver = "org.postgresql.Driver";
+
+			String url = "jdbc:postgresql://postgresql:5432/arquilab";
+			String username = "admin";
+			String password = "admin";
+			Class.forName(DB_driver);
+                        con = DriverManager.getConnection(url, username, password);
 			con.setAutoCommit(true);
 
 		} catch (Exception e) {
